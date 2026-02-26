@@ -329,22 +329,18 @@
       });
 
       let sourceUrl;
-      let widgetBaseUrl;
       let dev;
 
       // Environment detection
       const scriptSrc = window.location.href;
       if (scriptSrc.includes('localhost')) {
         sourceUrl = "http://localhost:8788";
-        widgetBaseUrl = 'https://dev.widget.sleak.chat';
         dev = true;
       }else if (scriptSrc.includes('dev')) {
         sourceUrl = "https://dev.sleakbot-v2.pages.dev";
-        widgetBaseUrl = 'https://dev.widget.sleak.chat';
         dev = true;
       } else {
         sourceUrl = "https://cdn.sleak.chat";
-        widgetBaseUrl = 'https://widget.sleak.chat';
       }
 
       // Load chatbot config after 1 second
@@ -353,7 +349,7 @@
           try {
             const chatId = getCookie(`sleakVisitorId_${chatbotId}`);
             const timestamp = new Date().getTime();
-            const chatbotConfigEndpoint = `${widgetBaseUrl}/api/config?id=${chatbotId}&chat_id=${chatId}&t=${timestamp}`;
+            const chatbotConfigEndpoint = `${sourceUrl}/api/config?id=${chatbotId}&chat_id=${chatId}&t=${timestamp}`;
 
             const chatbotConfigRequest = await fetch(chatbotConfigEndpoint, {
               method: 'get',
