@@ -370,12 +370,12 @@
             const chatbotName = document.getElementById('chatbotName');
             const chatbotInitial = document.getElementById('chatbotInitial');
 
-            if (config.name) {
+            if (config && config.name) {
               chatbotName.textContent = config.name;
               chatbotInitial.textContent = config.name.charAt(0).toUpperCase();
             }
 
-            if (
+            if (config &&
               config.avatar_url &&
               config.avatar_url !== 'https://uploads-ssl.webflow.com/65911e9735540c235757642f/65b53f83acecf90e74bd8844_profile_pic_default.png' &&
               config.avatar_url !== 'https://sygpwnluwwetrkmwilea.supabase.co/storage/v1/object/public/users/6c01d03c-b0bd-4521-bd3c-265ba38b482e/Rectangle%20(1).png'
